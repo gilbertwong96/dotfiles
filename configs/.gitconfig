@@ -1,0 +1,38 @@
+[user]
+	name = Gilbert
+	email = gilbertwong96@icloud.com
+    signingkey = 74FEC447B9780C195B2A47FC667FAA63566BA06F
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+
+[github]
+    user = gilbertwong96
+
+[commit]
+    gpgsign = true
+
+[alias]
+    st = status
+    d = diff
+    df = diff
+    ci = commit -V
+    cia = commit -V -a
+    co = checkout
+    cp = cherry-pick
+    l = log
+    ll = log -p
+    lt = log trunk..
+    llt = log -p trunk..
+    lm = log master..
+    llm = log -p master..
+    b = branch
+    br = branch

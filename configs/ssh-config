@@ -1,0 +1,14 @@
+HostkeyAlgorithms +ssh-rsa
+PubkeyAcceptedAlgorithms +ssh-rsa
+
+## Host github.com
+##     User git
+##     port 22
+##     IdentityFile ~/.ssh/id_rsa
+##     ProxyCommand nc -x 127.0.0.1:7890 %h %p
+## 
+## Host nas
+##     port 22
+##     User gilbert
+##     HostName 192.168.0.4
+##     IdentityFile ~/.ssh/id_rsa
