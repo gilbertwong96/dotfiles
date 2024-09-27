@@ -1,0 +1,361 @@
+add_newline = true
+command_timeout = 5000
+
+########################################
+# prompt global settings
+########################################
+
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$erlang\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$spack\
+$conda\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$direnv\
+$crystal\
+$custom\
+$status\
+$sudo\
+$line_break\
+$jobs\
+$container\
+$shell $fill $cmd_duration $time $battery $memory_usage
+$character
+"""
+
+# right_format = """
+# $cmd_duration
+# $time
+# $battery
+# $memory_usage
+# """
+
+#########################################
+## prompt detail settings
+#########################################
+
+[fill]
+symbol = " "
+style = "bold green"
+disabled = false
+
+[line_break]
+# separate prompt into 2 lines
+disabled = false
+
+########################################
+# Symbol Examples:
+# 
+########################################
+
+[character]
+success_symbol = " [ ❯❯❯](bold green)"
+error_symbol = " [ ❯❯❯](bold red fg:#ff0f0f) "
+format = "$symbol "
+disabled = false
+
+[time]
+disabled = false
+format = '🕙[ $time]($style) '
+use_12hr = false
+
+[username]
+style_user = "white bold fg:white bg:#9A348E"
+style_root = "red bold"
+format = "[](#9A348E)[$user ]($style)[](#9A348E bg:#1b1d1e)"
+disabled = false
+show_always = true
+
+[directory]
+truncate_to_repo = true
+fish_style_pwd_dir_length = 1
+read_only = '🔒'
+read_only_style = "fg:red bg:#DA627D"
+format = "[](bg:#DA627D fg:#1b1d1e)[ $path ]($style)[$read_only]($read_only_style)[](#DA627D bg:#1b1d1e)"
+style = "bg:#DA627D fg:white"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
+
+[cmd_duration]
+disabled = false
+min_time = 50
+show_milliseconds = true
+format = "[ $duration ]($style)"
+
+[package]
+# format = "[](bg:$style fg:#1B1D1E)[$symbol$version ](fg:#1B1D1E bg:$style)"
+format = "[](bg:$style fg:#1B1D1E)[$symbol$version](fg:#1B1D1E bg:$style)[](bg:#1B1D1E fg:$style)"
+symbol = "  "
+
+# hardware config
+[battery]
+format = "[❯ $symbol $percentage ](fg:$style)"
+full_symbol = "󰁹 "
+charging_symbol = "󰂄 "
+discharging_symbol = "󰂃 "
+unknown_symbol = "󰁽 "
+empty_symbol = "󰂎 "
+
+# full_symbol = "🔋"
+# empty_symbol = "🪫"
+
+	[[battery.display]]
+	threshold = 10
+	style = "bold fg:red"
+
+	[[battery.display]]
+	threshold = 30
+	style = "fg:#ff8800"
+
+	[[battery.display]]
+	threshold = 50
+	style = "fg:yellow"
+
+	[[battery.display]]
+	threshold = 80
+	style = "fg:green"
+
+	[[battery.display]]
+	threshold = 100
+	style = "fg:green"
+
+[memory_usage]
+disabled = false
+threshold = 0
+# symbol = "  "
+symbol = " "
+format = "$symbol [${ram}( | ${swap})]($style) "
+
+[status]
+disabled = false
+style = "#ff0f0f"
+format = "[](bg:$style fg:#1B1D1E)[$symbol $status](bg:$style fg:white)[](fg:$style)"
+
+# format = "[](bg:$style fg:#1b1d1e)[$read_only](bg:#b7492c $read_only_style)[ $path ](bg:$style)[](fg:$style)"
+# style = "#4169e1"
+
+# [directory]
+# format = "[](#DA627D bg:#DA627D)[$path ]($style)[$read_only]($read_only_style)[](#DA627D bg:#FCA17D)"
+# style = "bg:#DA627D fg:white"
+# read_only = "🔒"
+
+# VCS
+[git_branch]
+always_show_remote = false
+only_attached = false
+symbol = "   "
+format = "[](bg:#fee402 fg:#1b1d1e)[$symbol($branch(:$remote_branch)) ](bg:#fee402 $style)[](fg:#fee402 bg:#1B1D1E)"
+style = "bold black"
+
+[git_commit]
+# style = "#f05133"
+style= "bg:#1b1d1e fg:bold green"
+tag_symbol = " x 🏷  "
+only_detached = false
+tag_disabled = false
+format = "[ ($tag_symbol($hash)) ]($style)"
+
+# The git_state module will show in directories which are part of a git repository,
+# and where there is an operation in progress, such as: REBASING, BISECTING, etc.
+# If there is progress information (e.g., REBASING 3/10), that information will be shown too.
+[git_state]
+am = "APPLYING-MAILBOX"
+am_or_rebase = "APPLYING-MAILBOX/REBASE"
+style = "#f05133"
+# format = "\b\b[ \\($state( $progress_current/$progress_total)\\)](fg:white bg:$style)[](fg:$style) "
+
+[git_metrics]
+disabled = false
+
+[git_status]
+# style = "#f05133"
+style = "#7e7f7e"
+format = "([](fg:$style)$conflicted$staged$modified$renamed$deleted$untracked$stashed$ahead_behind[](fg:$style))"
+
+conflicted = "[   ${count} ](fg:white bg:#7e7f7e)"
+staged = "[   $count ](fg:green bg:#7e7f7e)"
+# modified = "[  ${count} ](fg:#F0B277)"
+modified = "[  ${count} ](fg:#f1e583 bg:#7e7f7e)"
+renamed = "[   ${count} ](fg:#326ce5 bg:#7e7f7e)"
+deleted = "[  ${count} ](fg:#ff2600 bg:#7e7f7e)"
+untracked = "[  ${count} ](fg:#575757 bg:#7e7f7e)"
+ahead = "[ 🏎 💨${count} ](fg:purple bg:#7e7f7e)"
+behind = "[ 🙄${count} ](fg:yellow bg:#7e7f7e)"
+up_to_date = "[  ](fg:#59ef75 bg:#7e7f7e)"
+diverged = "[  נּ ](fg:#ff2600 bg:#7e7f7e)"
+# diverged = "[  נּ ](fg:#7a525d bg:#7e7f7e)[  ${ahead_count} ](fg:purple bg:#5cc9f5)[  ${behind_count} ](fg:#116bdf bg:#5cc9f5)"
+# stashed = "  ${count} stashed "
+stashed = "[  ${count} ](fg:#66d4ff bg:#7e7f7e)"
+
+[shlvl]
+disabled = true
+style = "fg:bright-blue"
+symbol = " "
+
+[env_var]
+variable = "GAMBLE_TEST_COMMAND"
+format = "gambling with [$env_value]($style)"
+
+# techno specific
+[aws]
+symbol = "🅰 "
+style = "#161F2D"
+format = "[](fg:black bg:#161F2D)[ $symbol($profile\\(($region)\\)) ](fg:white bg:#161F2D)[](fg:#161F2D)"
+disabled = true
+
+
+[conda]
+symbol = "🅒 "
+format = "[](fg:black bg:#5ABE37)[ $symbol$environment ](fg:#161F2D bg:#5ABE37)[](fg:#5ABE37)"
+
+
+[dart]
+symbol = " "
+
+[elixir]
+symbol = " "
+style = "#f05133"
+format = "[](bg:purple fg:#1B1D1E)[ $symbol($version OTP $otp_version) ](fg:#1B1D1E bg:purple)[](fg:purple)"
+
+[erlang]
+symbol = "  "
+style = "#f05133"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+
+[elm]
+symbol = " "
+
+[golang]
+symbol = " "
+style = "cyan"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+
+[java]
+symbol = " "
+style = "blue"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = ""
+style = "green"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol ($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+
+# [c]
+# symbol = ""
+# format = "[](bg:$style fg:#1B1D1E)[ $symbol ($name(-$version)) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+
+[lua]
+symbol = "☪"
+style = "blue"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol ($name(-$version)) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+
+
+[php]
+symbol = ""
+format = "[](bg:$style fg:#1B1D1E)[ $symbol ($name(-$version)) ](fg:#1B1D1E bg:$style)[](fg:147)"
+
+[python]
+symbol = ""
+format = "[](bg:$style fg:#1B1D1E)[ $symbol ($version)](fg:#1B1D1E bg:$style)[](fg:#b3b42b)"
+
+[ruby]
+symbol = ""
+style = "red"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol ($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+
+[rust]
+# symbol = " "
+symbol = "🦀  "
+style = "#ffa07a"
+# format = '[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)[](fg:$style)'
+# format = '[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)[](fg:$style)'
+# format = "[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+
+[vagrant]
+# symbol = "⍱ "
+symbol = " ⨈ "
+version_format = "${raw}"
+format = "[$symbol($version )]($style)"
+
+[scala]
+style = "red"
+format = "[](bg:$style fg:#1B1D1E)[ ${symbol}(${version}) ](bg:$style)[](fg:$style)"
+
+[gcloud]
+disabled = true
+
+[direnv]
+disabled = false
+symbol = "§ "
+detect_files = ['.envrc']
+format = "[](fg:black bg:#2B64CF)[ $symbol$loaded ](fg:white bg:#2B64CF)[](fg:#2B64CF)"
