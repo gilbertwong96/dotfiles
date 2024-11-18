@@ -347,6 +347,9 @@ symbol = " ⨈ "
 version_format = "${raw}"
 format = "[$symbol($version )]($style)"
 
+[docker_context]
+format = '[](fg:black bg:#4084e5)[ $context ](fg:white bg:#4084e5)[](fg:#4084e5)'
+
 [scala]
 style = "red"
 format = "[](bg:$style fg:#1B1D1E)[ ${symbol}(${version}) ](bg:$style)[](fg:$style)"
