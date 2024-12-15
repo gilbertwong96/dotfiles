@@ -31,7 +31,7 @@ switch (uname)
 end
 
 source ~/.asdf/asdf.fish
-fish_add_path -agP $HOME/.cache/rebar3/bin $HOME/.cargo/bin $HOME/.vector/bin /opt/homebrew/opt/postgresql@16/bin
+fish_add_path -agP $HOME/.cache/rebar3/bin $HOME/.cargo/bin $HOME/.vector/bin /opt/homebrew/opt/postgresql@16/bin $HOME/.local/bin
 
 #######################################
 ## For Postgresql
@@ -164,15 +164,13 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /opt/homebrew/Caskroom/miniconda/base/bin/conda
-    eval /opt/homebrew/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+if test -f /Users/gilbertwong/miniconda3/bin/conda
+    eval /Users/gilbertwong/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 else
-    if test -f "/opt/homebrew/Caskroom/miniconda/base/etc/fish/conf.d/conda.fish"
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/fish/conf.d/conda.fish"
+    if test -f "/Users/gilbertwong/miniconda3/etc/fish/conf.d/conda.fish"
+        . "/Users/gilbertwong/miniconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "/opt/homebrew/Caskroom/miniconda/base/bin" $PATH
+        set -x PATH "/Users/gilbertwong/miniconda3/bin" $PATH
     end
 end
-
-set -gx CONDA_AUTO_ACTIVATE_BASE false
 # <<< conda initialize <<<

@@ -325,7 +325,7 @@ format = "[](bg:$style fg:#1B1D1E)[ $symbol ($name(-$version)) ](fg:#1B1D1E b
 
 [python]
 symbol = ""
-format = "[](bg:$style fg:#1B1D1E)[ $symbol ($version)](fg:#1B1D1E bg:$style)[](fg:#b3b42b)"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol ($version)](fg:#1B1D1E bg:$style)[](fg:$style)"
 
 [ruby]
 symbol = ""
