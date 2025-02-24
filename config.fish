@@ -30,8 +30,27 @@ switch (uname)
         set -gx OSTYPE "unknown"
 end
 
-source ~/.asdf/asdf.fish
-fish_add_path -agP $HOME/.cache/rebar3/bin $HOME/.cargo/bin $HOME/.vector/bin /opt/homebrew/opt/postgresql@16/bin $HOME/.local/bin
+#######################################
+## Add asdf shims to path
+#######################################
+
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+
+set --erase _asdf_shims
+
+fish_add_path -agP $HOME/.cache/rebar3/bin $HOME/.cargo/bin $HOME/.vector/bin \
+    /opt/homebrew/opt/postgresql@16/bin $HOME/.local/bin $HOME/miniconda3/bin \
+    $HOME/go/bin
 
 #######################################
 ## For Postgresql
@@ -47,7 +66,7 @@ set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
 
 # set -xg MANPATH = /opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/usr/local/MacGPG2/share/man
 if [ $OSTYPE = "MacOS" ]
-    fish_add_path /opt/homebrew/bin /opt/homebrew/sbin $HOME/bin
+    fish_add_path -agP /opt/homebrew/bin /opt/homebrew/sbin $HOME/bin
     set -xg ERL_LIBS '/opt/homebrew/opt/proper/proper-1.4'
 
     ## For homebrew
@@ -174,3 +193,10 @@ else
     end
 end
 # <<< conda initialize <<<
+
+
+
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.fish 2>/dev/null || :
