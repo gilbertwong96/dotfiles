@@ -72,7 +72,7 @@ if [ $OSTYPE = "MacOS" ]
     ## For homebrew
     alias bubo 'brew update && brew outdated'
     alias bubc 'brew upgrade && brew cleanup'
-    alias bubu 'bubo && bubc'
+    abbr -a bubu 'bubo && bubc'
 
     fish_add_path -gP /opt/homebrew/opt/coreutils/libexec/gnubin \
         /opt/homebrew/opt/gnu-sed/libexec/gnubin
@@ -84,11 +84,11 @@ end
 
 ## For emacs
 # alias emacs 'TERM=xterm-emacs emacs -nw'
-alias e 'emacsclient'
-alias et 'emacsclient -t'
-alias ec 'emacsclient -c'
-alias en 'emacs -nw'
-alias n 'nvim'
+abbr -a e 'emacsclient'
+abbr -a et 'emacsclient -t'
+abbr -a ec 'emacsclient -c'
+abbr -a en 'emacs -nw'
+abbr -a n 'nvim'
 
 # set -xg TERM 'xterm-emacs'
 set -xg EDITOR 'emacsclient'
@@ -135,19 +135,19 @@ set -gx LESS_TERMCAP_se \e'[0m'
 # alias vector 'docker run -i -v (pwd)/:/etc/vector/ --rm timberio/vector:0.31.0-debian'
 
 ## For interesting tools
-alias ping 'prettyping -nolegend'
-alias preview="fzf --preview 'bat --color \"always\" {}'"
+abbr -a ping 'prettyping -nolegend'
+abbr -a preview "fzf --preview 'bat --color \"always\" {}'"
 
 # Add support for ctrl+o to open selected file in emacs
 set -xg FZF_DEFAULT_OPTS "--bind='ctrl-o:execute(emacsclient {})+abort'"
-alias top btm
-alias du 'ncdu --color dark -rr -x --exclude .git --exclude node_modules'
-# alias help 'tldr'
-alias cat 'bat --theme Monokai\ Extended -pp'
+abbr -a top btm
+abbr -a du 'ncdu --color dark -rr -x --exclude .git --exclude node_modules'
+# abbr -a help 'tldr'
+abbr -a cat 'bat --theme Monokai\ Extended -pp'
 alias ls 'eza --icons'
-alias ll 'ls -alhF'
-alias lt 'll -T'
-alias rm 'trash'
+abbr -a ll 'ls -alhF'
+abbr -a lt 'll -T'
+abbr -a rm 'trash'
 
 # ## For tmux
 # alias tmux 'set TERM=xterm-256color tmux'
@@ -172,7 +172,7 @@ direnv hook fish | source
 # Wrap tmux to avoid issues with environment loading.
 # Make sure that direnv is unloaded before executing tmux, and avoid issues with environment variables mangling in tmux's subshells
 
-alias tmux "direnv exec / tmux"
+abbr -a tmux "direnv exec / tmux"
 
 # pnpm
 set -gx PNPM_HOME "/Users/gilbertwong/Library/pnpm"
@@ -194,9 +194,36 @@ else
 end
 # <<< conda initialize <<<
 
-
-
-
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init.fish 2>/dev/null || :
+
+# Enhance git command
+abbr -a g   'git'
+abbr -a ga  'git add'
+abbr -a gaa 'git add all'
+
+abbr -a gb    'git branch -vv'
+abbr -a gbD   'git branch -D'
+abbr -a gba   'git branch -a -v'
+abbr -a gban  'git branch -a -v --no-merged'
+abbr -a gbd   'git branch -d'
+abbr -a gbl   'git branch -b -w'
+abbr -a gbs   'git bisect'
+abbr -a gbsb  'git bisect bad'
+abbr -a gbsg  'git bisect good'
+abbr -a gbsr  'git bisect reset'
+abbr -a gbss  'git bisect start'
+abbr -a gc    'git commit -v'
+abbr -a gca   'git commit -v -a'
+abbr -a gca!  'git commit -v -a --amend'
+abbr -a gcam  'git commit -a -m'
+abbr -a gcan! 'git commit -v -a --no-edit --amend'
+abbr -a gcav  'git commit -a -v --no-verify'
+abbr -a gco   'git checkout'
+abbr -a gca   'git commit -v -a'
+abbr -a gcl   'git clone'
+abbr -a gcl   'git clone'
+abbr -a gcf   'git config list'
+abbr -a gclean 'git clean -di'
+abbr -a gclean! 'git clean -dfx'
