@@ -306,8 +306,8 @@ symbol = " "
 
 [nodejs]
 symbol = ""
-style = "green"
-format = "[](bg:$style fg:#1B1D1E)[ $symbol ($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+style = "#417e38"
+format = "[](bg:#417e38 fg:#1B1D1E)[ $symbol ($version) ](fg:#1B1D1E bg:#417e38)[](fg:#417e38)"
 
 # [c]
 # symbol = ""
