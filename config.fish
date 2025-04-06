@@ -50,7 +50,7 @@ set --erase _asdf_shims
 
 fish_add_path -agP $HOME/.cache/rebar3/bin $HOME/.cargo/bin $HOME/.vector/bin \
     /opt/homebrew/opt/postgresql@16/bin $HOME/.local/bin $HOME/miniconda3/bin \
-    $HOME/go/bin $(npm config get prefix)/bin
+    $HOME/go/bin
 
 #######################################
 ## For Postgresql

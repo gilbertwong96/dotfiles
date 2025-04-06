@@ -269,14 +269,17 @@ style = "#161F2D"
 format = "[](fg:black bg:#161F2D)[ $symbol($profile\\(($region)\\)) ](fg:white bg:#161F2D)[](fg:#161F2D)"
 disabled = true
 
-
 [conda]
 symbol = "🅒 "
 format = "[](fg:black bg:#5ABE37)[ $symbol$environment ](fg:#161F2D bg:#5ABE37)[](fg:#5ABE37)"
 
+[swift]
+symbol = "𓅮"
+format = "[](bg:#de5d43 fg:#1B1D1E)[ $symbol ($version) ](fg:#1B1D1E bg:#de5d43)[](fg:#de5d43)"
 
 [dart]
 symbol = " "
+format = "[](bg:#5bb4f0 fg:#1B1D1E)[ $symbol ($version) ](fg:#1B1D1E bg:#5bb4f0)[](fg:#5bb4f0)"
 
 [elixir]
 symbol = " "
