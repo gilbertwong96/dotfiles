@@ -48,9 +48,11 @@ end
 
 set --erase _asdf_shims
 
+set GEM_HOME (ruby -e "print Gem.user_dir")
+
 fish_add_path -agP $HOME/.cache/rebar3/bin $HOME/.cargo/bin $HOME/.vector/bin \
     /opt/homebrew/opt/postgresql@16/bin $HOME/.local/bin $HOME/miniconda3/bin \
-    $HOME/go/bin
+    $HOME/go/bin $GEM_HOME/bin
 
 #######################################
 ## For Postgresql
