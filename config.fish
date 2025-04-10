@@ -63,12 +63,21 @@ set -gx CPPFLAGS "-I/opt/homebrew/opt/postgresql@16/include"
 set -gx PKG_CONFIG_PATH "/opt/homebrew/opt/postgresql@16/lib/pkgconfig"
 
 #######################################
+## For Compilers to find openjdk
+#######################################
+
+set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/openjdk/include"
+
+# For the system java swrapper on MacOS to find this JDK, symlink it with
+# sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
+#######################################
 ## For Homebrew
 #######################################
 
 # set -xg MANPATH = /opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/usr/local/MacGPG2/share/man
 if [ $OSTYPE = "MacOS" ]
-    fish_add_path -agP /opt/homebrew/bin /opt/homebrew/sbin $HOME/bin
+    fish_add_path -agP /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/openjdk/bin $HOME/bin
     set -xg ERL_LIBS '/opt/homebrew/opt/proper/proper-1.4'
 
     ## For homebrew
