@@ -50,9 +50,21 @@ set --erase _asdf_shims
 
 set GEM_HOME (ruby -e "print Gem.user_dir")
 
-fish_add_path -agP $HOME/.cache/rebar3/bin $HOME/.cargo/bin $HOME/.vector/bin \
-    /opt/homebrew/opt/postgresql@16/bin $HOME/.local/bin $HOME/miniconda3/bin \
-    $HOME/go/bin $GEM_HOME/bin
+fish_add_path -agP \
+    # Local bin
+    $HOME/.local/bin \
+    # For Erlang rebar3
+    $HOME/.cache/rebar3/bin \
+    # For Rust Cargo
+    $HOME/.cargo/bin \
+    # For vector
+    $HOME/.vector/bin \
+    # For Postgresql
+    /opt/homebrew/opt/postgresql@16/bin \
+    # For golang
+    $HOME/go/bin \
+    # For ruby gem
+    $GEM_HOME/bin
 
 #######################################
 ## For Postgresql
@@ -87,6 +99,8 @@ if [ $OSTYPE = "MacOS" ]
 
     fish_add_path -gP /opt/homebrew/opt/coreutils/libexec/gnubin \
         /opt/homebrew/opt/gnu-sed/libexec/gnubin
+
+    source ~/.orbstack/shell/init.fish 2>/dev/null || :
 end
 
 ############
@@ -194,20 +208,19 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f "$HOME/miniconda3/bin/conda"
-    eval "$HOME/miniconda3/bin/conda" "shell.fish" "hook" $argv | source
+if test -f /Users/gilbertwong/miniconda3/bin/conda
+    eval /Users/gilbertwong/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 else
-    if test -f "$HOME/miniconda3/etc/fish/conf.d/conda.fish"
-        . "$HOME/miniconda3/etc/fish/conf.d/conda.fish"
+    if test -f "/Users/gilbertwong/miniconda3/etc/fish/conf.d/conda.fish"
+        . "/Users/gilbertwong/miniconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "$HOME/miniconda3/bin" $PATH
+        set -x PATH "/Users/gilbertwong/miniconda3/bin" $PATH
     end
 end
 # <<< conda initialize <<<
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
-source ~/.orbstack/shell/init.fish 2>/dev/null || :
 
 # Enhance git command
 abbr -a g   'git'
