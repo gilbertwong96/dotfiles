@@ -53,6 +53,8 @@ set GEM_HOME (ruby -e "print Gem.user_dir")
 fish_add_path -agP \
     # Local bin
     $HOME/.local/bin \
+    # Deno bin
+    $HOME/.deno/bin \
     # For Erlang rebar3
     $HOME/.cache/rebar3/bin \
     # For Rust Cargo
