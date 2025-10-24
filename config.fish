@@ -2,6 +2,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+set -gx LIBRARY_PATH /opt/homebrew/opt/libgccjit/lib/gcc/current
+
 ########################
 ### GLOBAL VARIABLES ###
 ########################
