@@ -93,7 +93,7 @@ set -gx CPPFLAGS "$CPPFLAGS -I/opt/homebrew/opt/openjdk/include"
 
 # set -xg MANPATH = /opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/usr/local/MacGPG2/share/man
 if [ $OSTYPE = "MacOS" ]
-    fish_add_path -agP /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/openjdk/bin $HOME/bin
+    fish_add_path -pgP /opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/openjdk/bin $HOME/bin
     set -xg ERL_LIBS '/opt/homebrew/opt/proper/proper-1.4'
 
     ## For homebrew
@@ -101,8 +101,8 @@ if [ $OSTYPE = "MacOS" ]
     alias bubc 'brew upgrade && brew cleanup'
     abbr -a bubu 'bubo && bubc'
 
-    fish_add_path -gP /opt/homebrew/opt/coreutils/libexec/gnubin \
-        /opt/homebrew/opt/gnu-sed/libexec/gnubin
+    # fish_add_path -gP /opt/homebrew/opt/gnu-sed/libexec/gnubin \
+        # /opt/homebrew/opt/coreutils/libexec/gnubin
 
     source ~/.orbstack/shell/init.fish 2>/dev/null || :
 end
