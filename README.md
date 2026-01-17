@@ -4,7 +4,7 @@ A collection of personal configuration files for a productive development enviro
 
 ## Overview
 
-This repository contains my personal dotfiles, carefully configured to provide a seamless development experience. The setup includes configurations for Fish shell, Tmux terminal multiplexer, Starship prompt, Kitty terminal emulator, Git, and SSH.
+This repository contains my personal dotfiles, carefully configured to provide a seamless development experience. The setup includes configurations for Fish shell, Tmux terminal multiplexer, Starship prompt, Kitty terminal emulator, Git, SSH, and Claude Code.
 
 ## Features
 
@@ -14,6 +14,7 @@ This repository contains my personal dotfiles, carefully configured to provide a
 - **Kitty**: Fast, feature-rich, GPU-based terminal emulator
 - **Git**: Clean Git configuration with proper settings
 - **SSH**: Optimized SSH configuration for various connections
+- **Claude Code**: AI-powered CLI assistant with custom configuration and project instructions
 
 ## Installation
 
@@ -43,6 +44,9 @@ The bootstrap script will create symbolic links to the configuration files in th
 - `~/.config/starship.toml` → Starship prompt configuration
 - `~/.gitconfig` → Git configuration
 - `~/.ssh/config` → SSH configuration
+- `~/.claude/CLAUDE.md` → Claude Code project instructions
+
+Additionally, it merges `claude/config.json` into `~/.claude/settings.json`, preserving existing settings while adding or overwriting with new configurations.
 
 ## Requirements
 
@@ -51,6 +55,8 @@ The bootstrap script will create symbolic links to the configuration files in th
 - **Starship**: Install with Homebrew: `brew install starship`
 - **Kitty**: Install with Homebrew: `brew install --cask kitty`
 - **Tmux Plugin Manager**: Install with `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+- **Claude Code**: Install via [claude.ai](https://claude.com/claude-code)
+- **jq**: Install with Homebrew: `brew install jq` (required for Claude config merging)
 
 ## Configuration Details
 
@@ -80,6 +86,17 @@ The bootstrap script will create symbolic links to the configuration files in th
 - Keyboard shortcuts
 - Performance optimizations
 
+### Claude Code (`claude/`)
+- **CLAUDE.md**: Project instructions that define command preferences and tool usage patterns
+- **config.json**: Central configuration for Claude Code including:
+  - `allowedCommands`: Whitelisted shell commands Claude can execute
+  - `autoApprovePatterns`: Regex patterns for auto-approving safe commands
+  - `permissions`: File access restrictions (denied patterns for sensitive files)
+  - `enabledPlugins`: Plugin configuration (superpowers, code-reviewer, frontend-design, etc.)
+  - `alwaysThinkingEnabled`: Enable continuous thinking mode
+
+The bootstrap script merges `claude/config.json` into `~/.claude/settings.json` on each run, ensuring your dotfiles repository stays as the source of truth while preserving any local customizations in your existing settings.
+
 ## Screenshots
 
 *(Add screenshots of your terminal setup here if desired)*
@@ -103,6 +120,7 @@ Make changes directly to the files in this repository. The symbolic links will a
 - [Starship](https://starship.rs/)
 - [Kitty](https://sw.kovidgoyal.net/kitty/)
 - [Dracula Theme](https://draculatheme.com/tmux)
+- [Claude Code](https://claude.com/claude-code)
 
 ## License
 

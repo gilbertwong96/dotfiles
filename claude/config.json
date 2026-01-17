@@ -1,0 +1,50 @@
+{
+  "allowedCommands": [
+    "read",
+    "grep",
+    "rg",
+    "awk",
+    "sed",
+    "cat",
+    "head",
+    "tail",
+    "find",
+    "xargs"
+  ],
+  "autoApprovePatterns": [
+    "^(grep|rg|awk|sed|cat|head|tail)\\s",
+    "^read\\s+-r\\s+",
+    "^find\\s+\\.\\s+-name"
+  ],
+  "permissions": {
+    "deny": [
+      "**/*.key",
+      "**/*.pem",
+      "**/*.p12",
+      "**/*.pfx",
+      "**/id_rsa",
+      "**/id_ed25519",
+      "**/id_ecdsa",
+      "**/.env*",
+      "**/credentials",
+      "**/aws/credentials",
+      "**/.aws/credentials",
+      "**/.config/gcloud/application_default_credentials.json",
+      "**/.kube/config",
+      "**/*credential*",
+      "**/*secret*",
+      "**/*token*"
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true,
+    "code-review@claude-plugins-official": false,
+    "frontend-design@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "figma@claude-plugins-official": false,
+    "expo-app-design@expo-plugins": true,
+    "context7@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true
+}
