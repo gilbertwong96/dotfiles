@@ -41,6 +41,8 @@ set GEM_HOME (ruby -e "print Gem.user_dir")
 fish_add_path -agP \
     # Local bin
     $HOME/.local/bin \
+    # Bun bin
+    $HOME/.bun/bin \
     # Deno bin
     $HOME/.deno/bin \
     # For Erlang rebar3
@@ -54,7 +56,9 @@ fish_add_path -agP \
     # For golang
     $HOME/go/bin \
     # For ruby gem
-    $GEM_HOME/bin
+    $GEM_HOME/bin \
+    # For browser CLI
+    $HOME/.browser-use-env/bin
 
 #######################################
 ## For Postgresql
