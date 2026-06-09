@@ -263,3 +263,7 @@ abbr -a gcl   'git clone'
 abbr -a gcf   'git config list'
 abbr -a gclean 'git clean -di'
 abbr -a gclean! 'git clean -dfx'
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/Users/gilbertwong/.local/bin" $PATH
