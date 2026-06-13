@@ -1,5 +1,18 @@
 #!/bin/sh
 
+# Install mise (polyglot tool version manager) if missing.
+# mise is preferred over asdf for the reasons outlined in the README.
+if ! command -v mise >/dev/null 2>&1; then
+    echo "Installing mise via Homebrew..."
+    if command -v brew >/dev/null 2>&1; then
+        brew install mise
+    else
+        echo "Error: mise is required but Homebrew is not installed."
+        echo "Install Homebrew first (https://brew.sh) and re-run this script."
+        exit 1
+    fi
+fi
+
 ln -sFfi "$(PWD)"/.tmux.conf ~/.tmux.conf
 ln -sFfi "$(PWD)"/config.fish ~/.config/fish/config.fish
 

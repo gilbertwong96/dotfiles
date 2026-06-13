@@ -98,22 +98,15 @@ if [ $OSTYPE = "MacOS" ]
 end
 
 #######################################
-## Add asdf shims to path
+## Tool version manager (mise)
 #######################################
 
-if test -z $ASDF_DATA_DIR
-    set _asdf_shims "$HOME/.asdf/shims"
-else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
+# mise installs per-tool binaries under ~/.local/share/mise/installs and
+# exposes them through shims. mise is preferred over asdf because it has
+# faster startup, a single TOML config, and is actively maintained.
+if command -sq mise
+    mise activate fish | source
 end
-
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-
-set --erase _asdf_shims
 
 ############
 ## Editor ##

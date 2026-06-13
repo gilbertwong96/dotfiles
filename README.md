@@ -9,6 +9,7 @@ This repository contains my personal dotfiles, carefully configured to provide a
 ## Features
 
 - **Fish Shell**: Modern, powerful command-line shell with sensible defaults and path management
+- **Mise**: Polyglot tool version manager (replaces asdf) for Erlang, Elixir, Node.js, etc.
 - **Tmux**: Terminal multiplexer with Dracula theme and vim-style keybindings
 - **Starship**: Minimal, fast, and customizable prompt for any shell
 - **Kitty**: Fast, feature-rich, GPU-based terminal emulator
@@ -50,7 +51,9 @@ Additionally, it merges `claude/config.json` into `~/.claude/settings.json`, pre
 
 ## Requirements
 
+- **Homebrew**: Install from [brew.sh](https://brew.sh)
 - **Fish Shell**: Install with Homebrew: `brew install fish`
+- **Mise**: Installed automatically by `bootstrap.sh` if missing (`brew install mise`)
 - **Tmux**: Install with Homebrew: `brew install tmux`
 - **Starship**: Install with Homebrew: `brew install starship`
 - **Kitty**: Install with Homebrew: `brew install --cask kitty`
@@ -58,12 +61,28 @@ Additionally, it merges `claude/config.json` into `~/.claude/settings.json`, pre
 - **Claude Code**: Install via [claude.ai](https://claude.com/claude-code)
 - **jq**: Install with Homebrew: `brew install jq` (required for Claude config merging)
 
+### Why mise instead of asdf
+
+This dotfiles repo uses [mise](https://mise.jdx.dev/) (a Rust-based polyglot
+tool version manager) instead of asdf. Reasons:
+
+- **Faster startup**: mise activates in milliseconds; asdf's bash plugin
+  loading is noticeably slower
+- **Single TOML config**: `~/.config/mise/config.toml` for global settings
+  and `.mise.toml` per project, with no per-tool plugin discovery
+- **Actively maintained**: mise has a single repo and a small team; asdf
+  relies on dozens of independent plugins
+- **Better defaults**: mise ships with sensible defaults for many tools
+
+If you have a project that still uses asdf, the `.tool-versions` file is
+upstream-compatible: both asdf and mise read the same format.
+
 ## Configuration Details
 
 ### Fish Shell (`config.fish`)
 - UTF-8 locale configuration
 - OS detection and environment setup
-- ASDF version manager integration
+- mise version manager integration (via `mise activate fish`)
 - Custom PATH management
 - Development tool paths (Java, Deno, Go, Node.js, Ruby, Python)
 
