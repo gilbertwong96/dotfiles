@@ -312,9 +312,15 @@ symbol = ""
 style = "#417e38"
 format = "[](bg:#417e38 fg:#1B1D1E)[ $symbol ($version) ](fg:#1B1D1E bg:#417e38)[](fg:#417e38)"
 
-# [c]
-# symbol = ""
-# format = "[](bg:$style fg:#1B1D1E)[ $symbol ($name(-$version)) ](fg:#1B1D1E bg:$style)[](fg:$style)"
+[c]
+symbol = " "
+style = "#5C4CCC"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol$version(-$name) ](fg:white bg:$style)[](fg:$style)"
+
+[cmake]
+symbol = " "
+style = "bold #00599C"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
 
 [lua]
 symbol = "☪"
@@ -349,6 +355,11 @@ format = "[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)
 symbol = " ⨈ "
 version_format = "${raw}"
 format = "[$symbol($version )]($style)"
+
+[zig]
+symbol = "↯ "
+style = "#F7A41D"
+format = "[](bg:$style fg:#1B1D1E)[ $symbol($version) ](fg:#1B1D1E bg:$style)[](fg:$style)"
 
 [docker_context]
 format = '[](fg:black bg:#4084e5)[ $context ](fg:white bg:#4084e5)[](fg:#4084e5)'
