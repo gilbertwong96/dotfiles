@@ -213,13 +213,13 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /Users/gilbertwong/miniconda3/bin/conda
-    eval /Users/gilbertwong/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+if test -f $HOME/miniconda3/bin/conda
+    eval $HOME/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 else
-    if test -f "/Users/gilbertwong/miniconda3/etc/fish/conf.d/conda.fish"
-        . "/Users/gilbertwong/miniconda3/etc/fish/conf.d/conda.fish"
+    if test -f "$HOME/miniconda3/etc/fish/conf.d/conda.fish"
+        . "$HOME/miniconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "/Users/gilbertwong/miniconda3/bin" $PATH
+        set -x PATH "$HOME/miniconda3/bin" $PATH
     end
 end
 # <<< conda initialize <<<
@@ -259,4 +259,4 @@ abbr -a gclean! 'git clean -dfx'
 
 
 # Added by Antigravity CLI installer
-set -gx PATH "/Users/gilbertwong/.local/bin" $PATH
+set -gx PATH "$HOME/.local/bin" $PATH
